@@ -11,3 +11,7 @@
     border-left: 1vw solid black;
     border-right: 1vw solid black;
 }
+.mapContainer{
+    width: 100%;
+    height: 100%;
+}
