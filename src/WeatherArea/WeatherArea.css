@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#weather{
+    width: 100vw;
+    height: 40vh;
+    background-color: darkcyan;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#mapBoxArea{
+    width: 100vw;
+    height: 50vh;
+    border-top: 1vh solid black;
+    border-bottom: 1vh solid black;
+    border-left: 1vw solid black;
+    border-right: 1vw solid black;
+}
