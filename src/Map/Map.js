@@ -9,9 +9,9 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lng: -97.7,
-            lat: 31.3,
-            zoom: 5
+            lng: -98.49,
+            lat: 29.42,
+            zoom: 9
         }
     }
 
@@ -22,9 +22,15 @@ class Map extends React.Component {
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-97.7, 31.3],
+            center: [-98.49, 29.42],
             zoom: 9
         });
+
+        const marker = new mapboxgl.Marker({
+            color: "#941414",
+            draggable: true
+        }).setLngLat([-98.49, 29.42])
+            .addTo(map);
 
     }
 

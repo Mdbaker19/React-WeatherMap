@@ -8,6 +8,11 @@ const WeatherArea = () => {
             <WeatherCard/>
             <WeatherCard/>
             <WeatherCard/>
+            <WeatherCard/>
+            <WeatherCard/>
+            <WeatherCard/>
+            <WeatherCard/>
+            <WeatherCard/>
         </div>
     )
 }
