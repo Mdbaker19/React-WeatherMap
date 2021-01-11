@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const Card = () => {
+const Card = (props) => {
 
     return (
         <div id="card">
-            <p>Weather card</p>
+            <p>{props.condition}</p>
         </div>
     )
 
