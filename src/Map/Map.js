@@ -1,6 +1,7 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import mapboxToken from "../keys";
+import WeatherArea from "../WeatherArea/WeatherArea";
 
 mapboxgl.accessToken = mapboxToken;
 
@@ -9,8 +10,8 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lng: -98.49,
-            lat: 29.42,
+            lng: -98.498,
+            lat: 29.428,
             zoom: 9
         }
     }
@@ -21,9 +22,18 @@ class Map extends React.Component {
         lng: 0
     }
 
+    // weatherFunction = new WeatherArea(this.props);
+
     updateMarker(obj){
+        this.setState({
+            lng: obj.getLngLat.lng,
+            lat: obj.getLngLat.lat,
+            zoom: 9
+        });
+
         this.position.lng = obj.getLngLat().lng;
         this.position.lat = obj.getLngLat().lat;
+
     }
 
 

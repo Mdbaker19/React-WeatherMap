@@ -5,6 +5,8 @@ import Map from "../Map/Map";
 
 class WeatherArea extends Component {
 
+    // map = new Map(this.props);
+
     state = {
         days: [
             {
@@ -40,7 +42,9 @@ class WeatherArea extends Component {
                 high: null,
                 windSpeed: null
             }
-        ]
+        ],
+        lng: -98.49,
+        lat: 29.42
     }
 
     lng = -98.49;
@@ -88,7 +92,8 @@ class WeatherArea extends Component {
 
     fetch = fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.lat}&lon=${this.lng}&exclude=hourly,minutely&units=imperial&appid=${openWeatherApi}`).then(r => {
         r.json().then(data => {
-            console.log(data.daily)
+            console.log(data.daily);
+            // console.log(this.map.state);
             this.addWeatherInfo(data.daily);
         });
     });
@@ -97,7 +102,10 @@ class WeatherArea extends Component {
 
         const area = (
             this.state.days.map((day, index) => {
-                return <WeatherCard condition={day.title} dayHigh={day.high} windSpeed={day.windSpeed}/>
+                return <WeatherCard key={index}
+                                    condition={day.title}
+                                    dayHigh={day.high}
+                                    windSpeed={day.windSpeed}/>
             })
         );
 
