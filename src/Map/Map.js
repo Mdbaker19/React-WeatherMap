@@ -16,6 +16,16 @@ class Map extends React.Component {
     }
 
 
+    position = {
+        lat: 0,
+        lng: 0
+    }
+
+    updateMarker(obj){
+        this.position.lng = obj.getLngLat().lng;
+        this.position.lat = obj.getLngLat().lat;
+    }
+
 
 
     componentDidMount() {
@@ -31,6 +41,8 @@ class Map extends React.Component {
             draggable: true
         }).setLngLat([-98.49, 29.42])
             .addTo(map);
+
+        marker.on('dragend', this.updateMarker.bind(this, marker));
 
     }
 

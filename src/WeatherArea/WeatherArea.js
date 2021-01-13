@@ -1,27 +1,44 @@
 import React, { Component } from 'react';
 import WeatherCard from "../WeatherCards/WeatherCard";
 import openWeatherApi from "../weatherKey";
+import Map from "../Map/Map";
 
-class WeatherArea extends Component{
+class WeatherArea extends Component {
 
     state = {
-        days : [
+        days: [
             {
-                title: "first card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }, {
-                title: "second card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }, {
-                title: "third card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }, {
-                title: "fourth card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }, {
-                title: "fifth card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }, {
-                title: "sixth card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }, {
-                title: "seventh card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }, {
-                title: "eighth card temp"
+                title: null,
+                high: null,
+                windSpeed: null
             }
         ]
     }
@@ -33,48 +50,62 @@ class WeatherArea extends Component{
         this.setState({
             days: [
                 {
-                    title: dayList[0].weather[0].main
+                    title: dayList[0].weather[0].main,
+                    high: dayList[0].temp.max,
+                    windSpeed: dayList[0].wind_speed
                 }, {
-                    title: dayList[1].weather[0].main
+                    title: dayList[1].weather[0].main,
+                    high: dayList[1].temp.max,
+                    windSpeed: dayList[1].wind_speed
                 }, {
-                    title: dayList[2].weather[0].main
+                    title: dayList[2].weather[0].main,
+                    high: dayList[2].temp.max,
+                    windSpeed: dayList[2].wind_speed
                 }, {
-                    title: dayList[3].weather[0].main
+                    title: dayList[3].weather[0].main,
+                    high: dayList[3].temp.max,
+                    windSpeed: dayList[3].wind_speed
                 }, {
-                    title: dayList[4].weather[0].main
+                    title: dayList[4].weather[0].main,
+                    high: dayList[4].temp.max,
+                    windSpeed: dayList[4].wind_speed
                 }, {
-                    title: dayList[5].weather[0].main
+                    title: dayList[5].weather[0].main,
+                    high: dayList[5].temp.max,
+                    windSpeed: dayList[5].wind_speed
                 }, {
-                    title: dayList[6].weather[0].main
+                    title: dayList[6].weather[0].main,
+                    high: dayList[6].temp.max,
+                    windSpeed: dayList[6].wind_speed
                 }, {
-                    title: dayList[7].weather[0].main
+                    title: dayList[7].weather[0].main,
+                    high: dayList[7].temp.max,
+                    windSpeed: dayList[7].wind_speed
                 }
             ]
         })
     }
 
-    fetch = fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.lat}&lon=${this.lng}&exclude=hourly,minutely&units=imperial&appid=${openWeatherApi}`).then( r => {
+    fetch = fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.lat}&lon=${this.lng}&exclude=hourly,minutely&units=imperial&appid=${openWeatherApi}`).then(r => {
         r.json().then(data => {
             console.log(data.daily)
             this.addWeatherInfo(data.daily);
         });
     });
 
+    render() {
 
-render()
-    {
+        const area = (
+            this.state.days.map((day, index) => {
+                return <WeatherCard condition={day.title} dayHigh={day.high} windSpeed={day.windSpeed}/>
+            })
+        );
+
         return (
             <div id="weather">
-                <WeatherCard condition={this.state.days[0].title}/>
-                <WeatherCard condition={this.state.days[1].title}/>
-                <WeatherCard condition={this.state.days[2].title}/>
-                <WeatherCard condition={this.state.days[3].title}/>
-                <WeatherCard condition={this.state.days[4].title}/>
-                <WeatherCard condition={this.state.days[5].title}/>
-                <WeatherCard condition={this.state.days[6].title}/>
-                <WeatherCard condition={this.state.days[7].title}/>
+                {area}
             </div>
-        )
+        );
     }
 }
 
